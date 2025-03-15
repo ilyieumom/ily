@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Moving Love Text</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            white-space: nowrap;
+            display: flex;
+        }
+        .line {
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+            display: inline-block;
+            min-width: 200%; /* Ensures seamless looping */
+            animation-duration: 30s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        .left {
+            animation-name: moveLeft;
+        }
+        @keyframes moveLeft {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createLines() {
+            let body = document.body;
+            for (let i = 0; i < 40; i++) { // Create more lines to cover the full page
+                let container = document.createElement("div");
+                container.className = "container";
+                let line = document.createElement("div");
+                line.className = "line left"; // All lines move left to right
+                line.innerHTML = "I Love You 💖 ".repeat(200); // Endless repetition with heart emoji
+                container.appendChild(line);
+                body.appendChild(container);
+            }
+        }
+        window.onload = createLines;
+    </script>
+</body>
+</html>
